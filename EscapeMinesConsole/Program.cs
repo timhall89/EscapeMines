@@ -62,7 +62,8 @@ namespace EscapeMinesConsole
                         Console.WriteLine();
                         Console.WriteLine("Result:");
                         Result result = player.Play(settings.Turtle, actionSequence);
-                        Console.WriteLine($"    - {result}");
+                        Console.WriteLine($"    - [{result}] {result.GetDescription()}");
+                        Console.WriteLine();
                         settings.Turtle.Reset();
                     }
                 }
