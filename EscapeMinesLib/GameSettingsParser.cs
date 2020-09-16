@@ -35,7 +35,8 @@ namespace EscapeMinesLib
             }
             catch
             {
-                throw new InvalidDataException("Part of the settings data is invald");
+                // TODO: Throw specific exceptions about what is invalid with the settings file data.
+                throw new InvalidDataException("Part of the settings data is invalid");
             }
 
         }
