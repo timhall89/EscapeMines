@@ -3,5 +3,6 @@
 2 4
 1 0 N
 R M L M M
-R M M M
+L L M M L M
 M R M M R M M L M M
+L M M M
