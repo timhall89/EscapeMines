@@ -8,4 +8,9 @@
   <ItemGroup>
     <ProjectReference Include="..\EscapeMinesLib\EscapeMinesLib.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="settings.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

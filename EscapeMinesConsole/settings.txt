@@ -1,1 +1,7 @@
-﻿
+﻿4 5
+1,1 1,3 3,3
+2 4
+1 0 N
+R M L M M
+R M M M
+M R M M R M M L M M
