@@ -33,7 +33,6 @@ namespace EscapeMinesLib
                 throw new InvalidOperationException("One of the mines is at the same coordinate as the exit.");
             if (this.mines.Any(mine => !CoordinateOnBoard(mine)))
                 throw new ArgumentOutOfRangeException(null, "One or more of the mines are not on the board.");
-
         }
 
         public Result GetResultOfCoordinate(Coordinate coordinate)
