@@ -10,15 +10,10 @@ namespace EscapeMinesConsole
     {
         static void Main()
         {
-            Console.WriteLine("=========================");
-            Console.WriteLine("Welcome to Escape Mines!!");
-            Console.WriteLine("=========================");
-            Console.WriteLine();
-            Console.WriteLine("Please enter the filename of the settings file");
-            string filename = Console.ReadLine();
-            Console.WriteLine();
+            WriteTitleToConsole();
+            string fileName = ReadFileNameFromConsole();
 
-            if (File.Exists(filename))
+            if (File.Exists(fileName))
             {
                 try
                 {
@@ -26,20 +21,7 @@ namespace EscapeMinesConsole
                     Board board = new Board(settings.BoardSizeX, settings.BoardSizeY,
                         settings.Exit, settings.Mines);
 
-                    Console.WriteLine("=========================");
-                    Console.WriteLine("Playing on bord of size:");
-                    Console.WriteLine($"    - {settings.BoardSizeX} x {settings.BoardSizeY}");
-                    Console.WriteLine();
-                    Console.WriteLine("Mines are located at:");
-                    foreach (Coordinate mine in settings.Mines)
-                    {
-                        Console.WriteLine($"    - ({mine.X}, {mine.Y})");
-                    }
-
-                    Console.WriteLine();
-                    Console.WriteLine("Exit is located at:");
-                    Console.WriteLine($"    - ({settings.Exit.X}, {settings.Exit.Y})");
-                    Console.WriteLine();
+                    WriteBoadSettingsToConsole(settings);
 
                     Player player = new Player(board);
 
@@ -47,24 +29,13 @@ namespace EscapeMinesConsole
                     foreach (IEnumerable<Action> actionSequence in settings.ActionSequences)
                     {
                         gameNumber++;
-                        Console.WriteLine("=========================");
-                        Console.WriteLine($"Playing game number {gameNumber}");
-                        Console.WriteLine();
-                        Console.WriteLine("Turtle starting position:");
-                        Console.WriteLine($"    - ({settings.Turtle.Coordinate.X}, {settings.Turtle.Coordinate.Y})");
-                        Console.WriteLine($"    - Direction: {settings.Turtle.Direction}");
-                        Console.WriteLine();
-                        Console.WriteLine("Game actions:");
-                        foreach (Action action in actionSequence)
-                        {
-                            Console.WriteLine($"    - {action}");
-                        }
-                        Console.WriteLine();
-                        Console.WriteLine("Result:");
+                        WriteGameConfigToConsole(gameNumber, settings.Turtle, actionSequence);
+
                         Result result = player.Play(settings.Turtle, actionSequence);
-                        Console.WriteLine($"    - [{result}] {result.GetDescription()}");
-                        Console.WriteLine();
+
                         settings.Turtle.Reset();
+
+                        WriteResultToConsole(result);
                     }
                 }
                 catch(Exception ex)
@@ -72,12 +43,67 @@ namespace EscapeMinesConsole
                     Console.WriteLine("Woops something went wrong:");
                     Console.WriteLine($"    - {ex.Message}");
                 }
-                
             }
             else
             {
                 Console.WriteLine("File not found!!");
             }
+        }
+
+        private static void WriteTitleToConsole()
+        {
+            Console.WriteLine("=========================");
+            Console.WriteLine("Welcome to Escape Mines!!");
+            Console.WriteLine("=========================");
+            Console.WriteLine();
+        }
+
+        private static string ReadFileNameFromConsole()
+        {
+            Console.WriteLine("Please enter the filename of the settings file");
+            return Console.ReadLine();
+        }
+
+        private static void WriteBoadSettingsToConsole(GameSettings settings)
+        {
+            Console.WriteLine();
+            Console.WriteLine("=========================");
+            Console.WriteLine("Playing on bord of size:");
+            Console.WriteLine($"    - {settings.BoardSizeX} x {settings.BoardSizeY}");
+            Console.WriteLine();
+            Console.WriteLine("Mines are located at:");
+            foreach (Coordinate mine in settings.Mines)
+            {
+                Console.WriteLine($"    - ({mine.X}, {mine.Y})");
+            }
+            Console.WriteLine();
+            Console.WriteLine("Exit is located at:");
+            Console.WriteLine($"    - ({settings.Exit.X}, {settings.Exit.Y})");
+            Console.WriteLine();
+        }
+
+        private static void WriteGameConfigToConsole(int gameNumber, Turtle turtle, IEnumerable<Action> actionSequence)
+        {
+            Console.WriteLine("=========================");
+            Console.WriteLine($"Playing game number {gameNumber}");
+            Console.WriteLine();
+            Console.WriteLine("Turtle starting position:");
+            Console.WriteLine($"    - ({turtle.Coordinate.X}, {turtle.Coordinate.Y})");
+            Console.WriteLine($"    - Direction: {turtle.Direction}");
+            Console.WriteLine();
+            Console.WriteLine("Game actions:");
+            foreach (Action action in actionSequence)
+            {
+                Console.WriteLine($"    - {action}");
+            }
+            Console.WriteLine();
+        }
+
+        private static void WriteResultToConsole(Result result)
+        {
+            Console.WriteLine("Result:");
+            Console.WriteLine($"    - [{result}] {result.GetDescription()}");
+            Console.WriteLine();
         }
     }
 }
