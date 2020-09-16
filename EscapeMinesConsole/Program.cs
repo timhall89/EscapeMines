@@ -17,7 +17,7 @@ namespace EscapeMinesConsole
             {
                 try
                 {
-                    GameSettings settings = GameSettingsParser.ParseFromFile(filename);
+                    GameSettings settings = GameSettingsParser.ParseFromFile(fileName);
                     Board board = new Board(settings.BoardSizeX, settings.BoardSizeY,
                         settings.Exit, settings.Mines);
 
