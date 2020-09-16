@@ -49,5 +49,20 @@ namespace EscapeMinesTests
             Coordinate expectedCoordinate = new Coordinate(movedX, movedY);
             turtle.Coordinate.ShouldBe(expectedCoordinate);
         }
+
+        [Fact]
+        public void TurteResetsCorrectly()
+        {
+            Turtle turtle = new Turtle(new Coordinate(0, 0), Direction.South);
+            turtle.Move();
+            turtle.Move();
+            turtle.RotateLeft();
+            turtle.Move();
+
+            turtle.Reset();
+
+            turtle.Coordinate.ShouldBe(new Coordinate(0, 0));
+            turtle.Direction.ShouldBe(Direction.South);
+        }
     }
 }
