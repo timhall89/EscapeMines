@@ -1,4 +1,4 @@
-﻿namespace EscapeMines
+﻿namespace EscapeMinesLib
 {
     public enum Action
     {

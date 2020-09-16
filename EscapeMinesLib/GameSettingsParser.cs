@@ -2,7 +2,7 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
-namespace EscapeMines
+namespace EscapeMinesLib
 {
     public static class GameSettingsParser
     {

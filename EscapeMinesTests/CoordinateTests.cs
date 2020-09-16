@@ -1,7 +1,7 @@
 ﻿using System;
 using Xunit;
 using Shouldly;
-using EscapeMines;
+using EscapeMinesLib;
 namespace EscapeMinesTests
 {
     public class CoordinateTests

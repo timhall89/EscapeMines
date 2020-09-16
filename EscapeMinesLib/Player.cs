@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace EscapeMines
+namespace EscapeMinesLib
 {
     public class Player
     {

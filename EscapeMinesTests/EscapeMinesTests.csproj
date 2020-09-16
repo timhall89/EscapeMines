@@ -15,6 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EscapeMines\EscapeMines.csproj" />
+    <ProjectReference Include="..\EscapeMinesLib\EscapeMinesLib.csproj" />
   </ItemGroup>
 </Project>

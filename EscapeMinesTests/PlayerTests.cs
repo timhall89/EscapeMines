@@ -1,9 +1,9 @@
 ﻿using System;
 using Xunit;
 using Shouldly;
-using EscapeMines;
+using EscapeMinesLib;
 using System.Collections.Generic;
-using Action = EscapeMines.Action;
+using Action = EscapeMinesLib.Action;
 namespace EscapeMinesTests
 {
     public class PlayerTests

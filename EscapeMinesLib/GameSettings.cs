@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-namespace EscapeMines
+namespace EscapeMinesLib
 {
     public class GameSettings
     {

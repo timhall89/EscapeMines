@@ -1,5 +1,5 @@
 ﻿using System;
-namespace EscapeMines
+namespace EscapeMinesLib
 {
     public enum Direction
     {
