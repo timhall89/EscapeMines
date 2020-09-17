@@ -24,6 +24,7 @@ namespace EscapeMinesConsole
                     WriteBoadSettingsToConsole(settings);
 
                     Player player = new Player(board);
+                    Turtle turtle = settings.Turtle;
 
                     int gameNumber = 0;
                     foreach (IEnumerable<Action> actionSequence in settings.ActionSequences)
@@ -31,9 +32,9 @@ namespace EscapeMinesConsole
                         gameNumber++;
                         WriteGameConfigToConsole(gameNumber, settings.Turtle, actionSequence);
 
-                        Result result = player.Play(settings.Turtle, actionSequence);
+                        Result result = player.Play(turtle, actionSequence);
 
-                        settings.Turtle.Reset();
+                        turtle.Reset();
 
                         WriteResultToConsole(result);
                     }
